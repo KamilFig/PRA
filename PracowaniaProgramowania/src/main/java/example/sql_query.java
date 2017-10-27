@@ -17,7 +17,7 @@ import static org.quartz.JobBuilder.newJob;
 import static org.quartz.TriggerBuilder.newTrigger;
 public class sql_query {
     public static void main(String [ ] args) {
-
+ /*
         Map<Integer, String> employees = new TreeMap<Integer, String>();
         String imie;
         int zmienna;
@@ -52,7 +52,7 @@ public class sql_query {
         for(Entry<Integer, String> entry: entrySet) {
             System.out.println(entry.getKey() + "  " + entry.getValue());
         }
-
+*/
 
     }
 }

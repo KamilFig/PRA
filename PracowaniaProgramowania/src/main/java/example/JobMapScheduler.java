@@ -6,7 +6,7 @@ import org.quartz.Scheduler;
 import org.quartz.SchedulerException;
 import org.quartz.Trigger;
 import org.quartz.impl.StdSchedulerFactory;
-import example.JobWithMap;
+import example.main;
 import java.util.Scanner;
 import static org.quartz.CronScheduleBuilder.cronSchedule;
 import static org.quartz.JobBuilder.newJob;
@@ -21,7 +21,7 @@ public class JobMapScheduler {
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 
             // define the job and tie it to our HelloJob class
-            JobDetail job = newJob(JobWithMap.class)
+            JobDetail job = newJob(main.class)
                     .withIdentity("myJob", "group1") // name "myJob", group "group1
                     .build();
 
@@ -38,7 +38,6 @@ public class JobMapScheduler {
 
             // and start it off
             scheduler.start();
-
 
 
 
