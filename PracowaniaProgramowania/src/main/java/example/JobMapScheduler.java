@@ -13,7 +13,7 @@ import static org.quartz.JobBuilder.newJob;
 import static org.quartz.TriggerBuilder.newTrigger;
 
 public class JobMapScheduler {
-
+/*
     public static void main(String[] args) throws InterruptedException {
 
         try {
@@ -21,21 +21,28 @@ public class JobMapScheduler {
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 
             // define the job and tie it to our HelloJob class
-            JobDetail job = newJob(main.class)
+            JobDetail job = newJob(JobWithMap.class)
                     .withIdentity("myJob", "group1") // name "myJob", group "group1
                     .build();
-
+            JobDetail job1 = newJob(JobWithMap.class)
+                    .withIdentity("myJob1","group2")
+                    .build();
             // Trigger the job to run now, and then repeat every 40 seconds
             Trigger trigger = newTrigger()
                     .withIdentity("trigger1", "group1")
                     .startNow()
-                    .withSchedule(cronSchedule("* * * ? * *"))
+                    .withSchedule(cronSchedule("0/30 * * ? * *"))
                     .build();
 
-
+            Trigger trigger1 = newTrigger()
+                    .withIdentity("trigger2", "group2")
+                    .startNow()
+                    .withSchedule(cronSchedule("0 15-45 8-18 ? * MON,TUE,WED,THU,FRI *"))
+                    .build();
             // Tell quartz to schedule the job using our trigger
             scheduler.scheduleJob(job, trigger);
 
+            scheduler.scheduleJob(job1,trigger1);
             // and start it off
             scheduler.start();
 
@@ -47,4 +54,5 @@ public class JobMapScheduler {
             se.printStackTrace();
         }
     }
+    */
 }
