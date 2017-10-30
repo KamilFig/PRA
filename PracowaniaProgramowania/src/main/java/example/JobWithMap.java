@@ -21,23 +21,19 @@ import static org.quartz.JobBuilder.newJob;
 import static org.quartz.TriggerBuilder.newTrigger;
 
 @PersistJobDataAfterExecution
-public class JobWithMap implements Job {
+public class JobWithMap implements Job  {
 
-     Map<Integer, String> query = new TreeMap<Integer, String>();
+    Map<Integer, String> query = new TreeMap<Integer, String>();
     Set<Map.Entry<Integer, String>> entrySet = query.entrySet();
-
-
 
 
     public void add(int n, String cos) {
 
-         query.put(n,cos);
-        System.out.println("Ilość zapytan: " + query.size());
+        query.put(n, cos);
+
 
         Set<Integer> keySet = query.keySet();
-        System.out.println("Klucze:\n" + keySet);
         Collection<String> values = query.values();
-        System.out.println("Wartości:\n" + values);
 
 
         for (Map.Entry<Integer, String> entry : entrySet) {
@@ -46,13 +42,62 @@ public class JobWithMap implements Job {
         }
 
     }
-    public void  execute(JobExecutionContext context) throws JobExecutionException{
-        {
-           try
-            {
-                query.put(1,"cos");
-                query.put(2,"cos2");
 
+    public String odczyt(String cos) {
+
+        int intSelect = cos.toUpperCase().indexOf("SELECT");
+        int intFrom = cos.toUpperCase().indexOf("FROM");
+        int intWhere = cos.toUpperCase().indexOf("WHERE");
+        int intOrder = cos.toUpperCase().indexOf("ORDER BY");
+
+        if(intSelect==0)
+        {
+            if(intFrom!=-1)
+            {
+              if(intWhere==-1 && intOrder==-1)
+              {
+                  return "Polecenie poprawne";
+              }
+              else if (intWhere==-1 && intOrder!=-1)
+              {
+                  return "Błąd polecenie nie zostało zapisane : Brak Where przed Order By";
+              }
+              else if(intWhere!=-1 && intFrom<intWhere)
+              {
+                  if(intOrder==-1 || intWhere<intOrder)
+                  {
+                      return "Polecenie poprawne";
+                  }
+                  else
+                  {
+                      return "Błąd polecenie nie zostało zapisane ";
+                  }
+
+              }
+              else
+              {
+                  return "Błąd polecenie nie zostało zapisane ";
+              }
+            }
+            else
+            {
+                return "Błąd polecenie nie zostało zapisane: Brak From";
+            }
+        }
+        else
+        {
+            return "Błąd polecenie nie zostało zapisane: Brak Select";
+        }
+
+
+    }
+
+    public void execute(JobExecutionContext context) throws JobExecutionException {
+        {
+            try {
+              /*  query.put(1, "cos");
+                query.put(2, "cos2");
+                */
                 PrintWriter zapis = new PrintWriter("odp.txt");
                 for (Map.Entry<Integer, String> entry : entrySet) {
 
@@ -63,11 +108,8 @@ public class JobWithMap implements Job {
 
                 }
                 zapis.close();
-            }
-            catch(FileNotFoundException se)
-            {
+            } catch (FileNotFoundException se) {
                 se.printStackTrace();
-
 
 
             }
@@ -76,5 +118,6 @@ public class JobWithMap implements Job {
 
     }
 }
+
 
 

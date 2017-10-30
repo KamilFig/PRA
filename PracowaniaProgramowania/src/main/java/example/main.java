@@ -26,7 +26,7 @@ public class main extends  JobWithMap{
                     .withIdentity("myJob", "group1") // name "myJob", group "group1
                     .build();
 
-            JobDetail job1 = newJob(JobWithMap.class)
+            JobDetail job1 = newJob(Odliczanie.class)
                     .withIdentity("myJob1", "group2")
                     .build();
             // Trigger the job to run now, and then repeat every 40 seconds
@@ -39,22 +39,23 @@ public class main extends  JobWithMap{
             Trigger trigger1 = newTrigger()
                     .withIdentity("trigger2", "group2")
                     .startNow()
-                    .withSchedule(cronSchedule("0 15-45 8-18 ? * MON,TUE,WED,THU,FRI *"))
+                    .withSchedule(cronSchedule("0 * * ? * MON,TUE,WED,THU,FRI *"))
                     .build();
             // Tell quartz to schedule the job using our trigger
-            scheduler.scheduleJob(job, trigger);
 
-            scheduler.scheduleJob(job1, trigger1);
             // and start it off
             scheduler.start();
 
-            JobWithMap d = new JobWithMap();
+            scheduler.scheduleJob(job, trigger);
 
+            scheduler.scheduleJob(job1, trigger1);
+            JobWithMap d = new JobWithMap();
+            JobWithMap a = new JobWithMap();
 
 
             String imie;
             int zmienna;
-
+            System.out.println("Podaj najpierw numer zadania ,a następnie polecenie SQL , wpisanie 0  konczy działanie programu");
             do {
 
                 Scanner odczyt1 = new Scanner(System.in);
@@ -67,8 +68,8 @@ public class main extends  JobWithMap{
 
                 }
                 imie = odczyt.nextLine();
-
-                if (zmienna != 0) {
+               System.out.println(a.odczyt(imie));
+                if ((zmienna != 0) && a.odczyt(imie) =="Polecenie poprawne") {
                     d.add(zmienna, imie);
                 }
             }
