@@ -2,28 +2,14 @@ package example;
 
 import org.quartz.*;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.security.Key;
-import java.text.ParseException;
-import java.util.Map;
-import java.util.Set;
+
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import java.util.Date;
-import org.quartz.*;
-import org.quartz.impl.StdSchedulerFactory;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.*;
-
-import static org.quartz.CronScheduleBuilder.cronSchedule;
-import static org.quartz.JobBuilder.newJob;
-import static org.quartz.TriggerBuilder.newTrigger;
 @PersistJobDataAfterExecution
 public class Odliczanie implements Job {
 
@@ -119,8 +105,6 @@ public class Odliczanie implements Job {
            {
                SimpleDateFormat godzin = new SimpleDateFormat("HH");
                SimpleDateFormat minut = new SimpleDateFormat("mm");
-               System.out.println(d);
-               System.out.println(d2);
 
                long dif = d5.getTime() - d.getTime();
 
@@ -140,8 +124,6 @@ public class Odliczanie implements Job {
            {
                SimpleDateFormat godzin = new SimpleDateFormat("HH");
                SimpleDateFormat minut = new SimpleDateFormat("mm");
-               System.out.println(d);
-               System.out.println(d2);
 
                long dif = d7.getTime() - d.getTime();
 
@@ -161,8 +143,6 @@ public class Odliczanie implements Job {
            {
                SimpleDateFormat godzin = new SimpleDateFormat("HH");
                SimpleDateFormat minut = new SimpleDateFormat("mm");
-               System.out.println(d);
-               System.out.println(d2);
 
                long dif = d9.getTime() - d.getTime();
 
@@ -182,8 +162,6 @@ public class Odliczanie implements Job {
            {
                SimpleDateFormat godzin = new SimpleDateFormat("HH");
                SimpleDateFormat minut = new SimpleDateFormat("mm");
-               System.out.println(d);
-               System.out.println(d2);
 
                long dif = d11.getTime() - d.getTime();
 
