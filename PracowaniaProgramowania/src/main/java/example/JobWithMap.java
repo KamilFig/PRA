@@ -12,16 +12,16 @@ import java.util.*;
 
 
 @PersistJobDataAfterExecution
-public class JobWithMap implements Job {
+public class JobWithMap {
+
 
     Map<Integer, String> query = new TreeMap<Integer, String>();
     Set<Map.Entry<Integer, String>> entrySet = query.entrySet();
 
+    public void add(int Nr, String Zapytanie) throws FileNotFoundException {
 
-    public void add(int n, String cos) throws FileNotFoundException {
 
-
-        query.put(n, cos);
+        query.put(Nr, Zapytanie);
         final PrintWriter zapis = new PrintWriter("odp.txt");
       //  System.out.println("Ilość zapytan: " + query.size());
 
@@ -61,12 +61,12 @@ public class JobWithMap implements Job {
     }
 
 
-    public String odczyt(String cos) {
+    public String odczyt(String Zapytanie) {
 
-        int intSelect = cos.toUpperCase().indexOf("SELECT");
-        int intFrom = cos.toUpperCase().indexOf("FROM");
-        int intWhere = cos.toUpperCase().indexOf("WHERE");
-        int intOrder = cos.toUpperCase().indexOf("ORDER BY");
+        int intSelect = Zapytanie.toUpperCase().indexOf("SELECT");
+        int intFrom = Zapytanie.toUpperCase().indexOf("FROM");
+        int intWhere = Zapytanie.toUpperCase().indexOf("WHERE");
+        int intOrder = Zapytanie.toUpperCase().indexOf("ORDER BY");
 
         if (intSelect == 0) {
             if (intFrom != -1) {
@@ -94,37 +94,60 @@ public class JobWithMap implements Job {
 
     }
 
-    public void execute(JobExecutionContext context) throws JobExecutionException {
+    /*public void execute(JobExecutionContext context) throws JobExecutionException {
         {
-            /*
 
 
 
 
-            try {
+            JobKey key = context.getJobDetail().getKey();
+            JobDataMap dataMap = context.getJobDetail().getJobDataMap();
 
-                PrintWriter zapis = new PrintWriter("odp.txt");
-                for (Map.Entry<Integer, String> entry : entrySet) {
+            String Zapytanie = dataMap.getString("Zapytanie");
+            int Numerek = dataMap.getInt("Numer");
 
-                    System.out.println("Odczyt" + entry.getKey() + "  " + entry.getValue());
+            System.out.println(Zapytanie);
+            System.out.println(Numerek);
+            query.put(Numerek, Zapytanie);
 
 
-                    zapis.println(entry.getKey() + " " + entry.getValue());
+
+                try {
+                    PrintWriter zapis = new PrintWriter("odp.txt");
+
+
+                    Set<Integer> keySet = query.keySet();
+                    // System.out.println("Klucze:\n" + keySet);
+                    Collection<String> values = query.values();
+                    //   System.out.println("Wartości:\n" + values);
+
+                    for (Map.Entry<Integer, String> entry : entrySet) {
+
+                        System.out.println(entry.getKey() + "  " + entry.getValue());
+                       zapis.println(entry.getKey() + " " + entry.getValue());
+
+
+                    }
+
+                    zapis.close();
+                } catch (FileNotFoundException se) {
+                    se.printStackTrace();
+
 
                 }
-                zapis.close();
-            } catch (FileNotFoundException se) {
-                se.printStackTrace();
 
 
-            }
+
+
+
+
 
 
         }
- */
-        }
+
+        }*/
     }
-}
+
 
 
 

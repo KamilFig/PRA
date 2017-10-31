@@ -18,15 +18,14 @@ public class main extends  JobWithMap{
     public static void main(String[] args) throws InterruptedException,FileNotFoundException {
 
         try {
-
             // Grab the Scheduler instance from the Factory
             Scheduler scheduler = StdSchedulerFactory.getDefaultScheduler();
 
             // define the job and tie it to our HelloJob class
-            JobDetail job = newJob(JobWithMap.class)
-                    .withIdentity("myJob", "group1") // name "myJob", group "group1
+          /*  JobDetail job = newJob(JobWithMap.class)
+                    .withIdentity("myJob", "group1")// name "myJob", group "group1
                     .build();
-
+           */
             JobDetail job1 = newJob(Odliczanie.class)
                     .withIdentity("myJob1", "group2")
                     .build();
@@ -47,34 +46,36 @@ public class main extends  JobWithMap{
             // and start it off
             scheduler.start();
 
-            scheduler.scheduleJob(job, trigger);
+            //scheduler.scheduleJob(job, trigger);
 
             scheduler.scheduleJob(job1, trigger1);
-            JobWithMap d = new JobWithMap();
-            JobWithMap a = new JobWithMap();
+            JobWithMap dodanie = new JobWithMap();
+            JobWithMap sprawdzenie = new JobWithMap();
 
 
-            String imie;
-            int zmienna;
+            String Zapytanie;
+            int NrZadania;
             System.out.println("Podaj najpierw numer zadania ,a następnie polecenie SQL , wpisanie 0  konczy działanie programu");
             do {
 
                 Scanner odczyt1 = new Scanner(System.in);
                 Scanner odczyt = new Scanner(System.in);
-                zmienna = odczyt1.nextInt();
-                if (zmienna == 0) {
+                NrZadania = odczyt1.nextInt();
+                if (NrZadania == 0) {
                     scheduler.shutdown();
                     break;
 
 
                 }
-                imie = odczyt.nextLine();
-                System.out.println(a.odczyt(imie));
-                if ((zmienna != 0) && a.odczyt(imie) =="Polecenie poprawne") {
-                    d.add(zmienna, imie);
+                Zapytanie = odczyt.nextLine();
+                System.out.println(sprawdzenie.odczyt(Zapytanie));
+                if ((NrZadania != 0) && sprawdzenie.odczyt(Zapytanie) =="Polecenie poprawne") {
+                    dodanie.add(NrZadania, Zapytanie);
+
+
                 }
             }
-            while (zmienna != 0);
+            while (NrZadania != 0);
 
 
 
