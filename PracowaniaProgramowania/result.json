@@ -1,0 +1,31 @@
+{
+  "id" : 0,
+  "firstName" : "Jan",
+  "lastName" : "Polak359695199",
+  "address" : {
+    "id" : 0,
+    "street" : "poznanska",
+    "city" : "poznan",
+    "nr" : "1",
+    "housenr" : null,
+    "postcode" : "99090"
+  },
+  "managers" : [ ],
+  "subworkers" : [ {
+    "id" : 0,
+    "firstName" : "Roman",
+    "lastName" : "Polak-910062511",
+    "address" : {
+      "id" : 0,
+      "street" : "poznanska",
+      "city" : "poznan",
+      "nr" : "1",
+      "housenr" : null,
+      "postcode" : "99090"
+    },
+    "managers" : [ ],
+    "subworkers" : [ ],
+    "pieniadz" : 100
+  } ],
+  "pieniadz" : 100
+}
