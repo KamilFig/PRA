@@ -1,4 +1,4 @@
-# PRA
+# PRA [![Build Status](https://travis-ci.org/KamilFig/PRA.svg?branch=master)](https://travis-ci.org/KamilFig/PRA)
 Pracownia Programowania
 
 Projekt - Przyrost 1
