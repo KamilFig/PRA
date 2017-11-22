@@ -15,7 +15,6 @@ import java.util.Set;
         @UniqueConstraint(columnNames = {"first_name","last_name"})})
 public class Klienci {
 
-    private List<Klienci>  rent = new ArrayList<>();
 
     @Id @GeneratedValue
     @Column(name = "id")
@@ -40,9 +39,18 @@ public class Klienci {
     @JoinColumn(name="Address_ID", referencedColumnName = "id")
     Address address;
 
+  /*  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="Rent_ID",referencedColumnName = "rent_id")
+    private List<Wypozyczenia> rent = new ArrayList<>();
 
+    public List<Wypozyczenia> getRent() {
+        return rent;
+    }
 
-
+    public void setRent(List<Wypozyczenia> rent) {
+        this.rent = rent;
+    }
+    */
     public Klienci() {}
 
     public int getId() {
@@ -101,11 +109,5 @@ public class Klienci {
         this.address = address;
     }
 
-    public List<Klienci> getRent() {
-        return rent;
-    }
 
-    public void setRent(List<Klienci> rent) {
-        this.rent = rent;
-    }
 }

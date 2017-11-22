@@ -14,7 +14,6 @@ import java.util.Set;
 @Table(name = "RENT", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"rent_id"})})
 public class Wypozyczenia {
-    private Klienci klient;
 
     @Id
     @GeneratedValue
@@ -30,7 +29,10 @@ public class Wypozyczenia {
     @Column(name = "return_date")
     private String return_date;
 
-
+  /*  @ManyToOne
+    @JoinColumn(name="id")
+    private Klienci klient;
+   */
     public Wypozyczenia() {
     }
 
@@ -43,13 +45,6 @@ public class Wypozyczenia {
     }
 
 
-    public Klienci getKlient() {
-        return klient;
-    }
-
-    public void setKlient(Klienci klient) {
-        this.klient = klient;
-    }
 
     public int getPrice() {
 
@@ -75,5 +70,6 @@ public class Wypozyczenia {
     public void setReturn_date(String return_date) {
         this.return_date = return_date;
     }
+
 
 }

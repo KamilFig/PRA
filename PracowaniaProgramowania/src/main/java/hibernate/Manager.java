@@ -1,14 +1,11 @@
 package hibernate;
 
 import hibernate.model.Address;
-import hibernate.model.Employee;
-
+import hibernate.model.Klienci;
+import hibernate.model.Wypozyczenia;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 
@@ -31,17 +28,15 @@ class Manager {
             entityManager.getTransaction().begin();
 
             //add 1
-            Employee emp = new Employee();
+            Klienci emp = new Klienci();
             emp.setFirstName("Jan");
             emp.setLastName("Polak" + new Random().nextInt());
-            emp.setSalary(100);
             emp.setPesel(new Random().nextInt());
 
             //add 2
-            Employee emp2 = new Employee();
-            emp2.setFirstName("Roman");
+            Klienci emp2 = new Klienci();
+            emp2.setFirstName("Roman123");
             emp2.setLastName("Polak" + new Random().nextInt());
-            emp2.setSalary(100);
             emp2.setPesel(new Random().nextInt());
 
             //save 2
@@ -54,21 +49,20 @@ class Manager {
             address.setNr("1");
             address.setPostcode("99090");
 
+            //add rent
+            Wypozyczenia wypozyczenia = new Wypozyczenia();
+            wypozyczenia.setPrice(100);
+            wypozyczenia.setRent_date("1999-10-10");
+            wypozyczenia.setReturn_date("1999-11-10");
+
             emp.setAddress(address);
             emp2.setAddress(address);
-            emp.getSubworkers().add(emp2);
-
             entityManager.persist(address);
+            entityManager.persist(wypozyczenia);
             entityManager.persist(emp);
 
-            Employee employee = entityManager.find(Employee.class, emp.getId());
-            if (employee == null) {
-                System.out.println(emp.getId() + " not found! ");
-            } else {
-                System.out.println("Found " + employee);
-            }
 
-            System.out.println("Employee " + employee.getId() + " " + employee.getFirstName() + employee.getLastName());
+
 
 
             entityManager.getTransaction().commit();
@@ -85,6 +79,7 @@ class Manager {
         }
 
     }
+
 
 
 
