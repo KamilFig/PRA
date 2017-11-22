@@ -1,12 +1,17 @@
 package hibernate.model;
 
+import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.joda.ser.DateTimeSerializer;
+import org.joda.time.DateTime;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,property="refId", scope=Employee.class)
 @Entity
 @Table(name = "EMPLOYEE", uniqueConstraints = {
         @UniqueConstraint(columnNames = {"first_name","last_name"})})
@@ -22,9 +27,14 @@ public class Employee {
     @Column(name = "last_name")
     private String lastName;
 
+    @JsonProperty("pieniadz")
     @Column(name = "salary")
     private int salary;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private DateTime birth;
+
+    @JsonIgnore
     @Column(name = "PESEL", nullable = false, unique = true)
     private int pesel;
 
@@ -34,6 +44,7 @@ public class Employee {
 
     @ManyToMany(mappedBy = "subworkers", cascade = CascadeType.ALL)
     private List<Employee> managers = new ArrayList<Employee>();
+
 
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Employee>  subworkers = new ArrayList<>();
@@ -101,7 +112,17 @@ public class Employee {
         return address;
     }
 
+    public DateTime getBirth() {
+        return birth;
+    }
+
+    public void setBirth(DateTime birth) {
+        this.birth = birth;
+    }
+
     public void setAddress(Address address) {
         this.address = address;
     }
+
+
 }

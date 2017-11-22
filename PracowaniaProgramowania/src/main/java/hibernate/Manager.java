@@ -2,7 +2,6 @@ package hibernate;
 
 import hibernate.model.Address;
 import hibernate.model.Employee;
-import hibernate.queries.Queries;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -71,7 +70,6 @@ class Manager {
 
             System.out.println("Employee " + employee.getId() + " " + employee.getFirstName() + employee.getLastName());
 
-            changeFirstGuyToNowak(entityManager);
 
             entityManager.getTransaction().commit();
 
@@ -88,14 +86,6 @@ class Manager {
 
     }
 
-    // read a page of empleyees and change first one to Nowak
-    static void changeFirstGuyToNowak(EntityManager entityManager) {
 
-        Query query = entityManager.createQuery("SELECT k FROM Employee k");
-        List<Employee> employees = new Queries(entityManager).getAllEmployeeByPage(1);
-
-        employees.get(0).setLastName("NowakPRE" + new Random().nextInt());
-
-    }
 
 }
