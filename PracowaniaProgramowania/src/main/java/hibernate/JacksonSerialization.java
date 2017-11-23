@@ -72,7 +72,7 @@ public class JacksonSerialization {
         mapper.registerModule(new JodaModule());
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
-        //Deserialized employee object from employees.* file in resources
+        //Deserialized employee object from klienci.* file in resources
         InputStream employeeIs = JacksonSerialization.class.getClassLoader().
                 getResourceAsStream("klienci1." + fileSuffix);
         Klienci deserializedEmployee = mapper.readValue(employeeIs, Klienci.class);
@@ -100,19 +100,16 @@ public class JacksonSerialization {
             k.setLastName(deserializedEmployee.getLastName());
             k.setPesel(deserializedEmployee.getPesel());
 
+            k.setAddress(deserializedEmployee.getAddress());
 
-
-
-
-
-           /*  Address address = new Address();
+            Address address = new Address();
             address.setCity(deserializedEmployee.getAddress().getCity());
             address.setStreet(deserializedEmployee.getAddress().getStreet());
             address.setNr(deserializedEmployee.getAddress().getHousenr());
             address.setPostcode(deserializedEmployee.getAddress().getPostcode());
 
 
-            entityManager.persist(address);*/
+            entityManager.persist(address);
             entityManager.persist(k);
 
 
