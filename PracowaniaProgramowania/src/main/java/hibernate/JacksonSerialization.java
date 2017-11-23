@@ -58,7 +58,7 @@ public class JacksonSerialization {
         //Create objects to serialize
         ModelObjectsCreator objectsCreator = new ModelObjectsCreator();
 
-        //  List<Klienci> klient = objectsCreator.getEmployees();
+
 
         //Deserialized employee object from klienci.* file in resources
         InputStream klientIs = JacksonSerialization.class.getClassLoader().

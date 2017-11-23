@@ -1,5 +1,9 @@
 package hibernate;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+import com.fasterxml.jackson.datatype.joda.JodaModule;
 import hibernate.model.Address;
 import hibernate.model.Klienci;
 import hibernate.model.Wypozyczenia;
@@ -7,8 +11,10 @@ import hibernate.model.Autor;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.util.Random;
-
 
 class Manager {
 
@@ -82,9 +88,6 @@ class Manager {
             entityManager.persist(autor);
 
 
-
-
-
             entityManager.getTransaction().commit();
 
             System.out.println("Done");
@@ -99,8 +102,4 @@ class Manager {
         }
 
     }
-
-
-
-
 }
