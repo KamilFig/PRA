@@ -18,8 +18,9 @@ public class Wypozyczenia {
     @Id
     @GeneratedValue
     @Column(name = "rent_id")
-    private int id;
-
+    private int rent_id;
+    @Column(name = "customer_id")
+    private int customer_id;
     @Column(name = "price")
     private int price;
 
@@ -36,15 +37,22 @@ public class Wypozyczenia {
     public Wypozyczenia() {
     }
 
-    public int getId() {
-        return id;
+
+    public int getRent_id() {
+        return rent_id;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setRent_id(int rent_id) {
+        this.rent_id = rent_id;
     }
 
+    public int getCustomer_id() {
+        return customer_id;
+    }
 
+    public void setCustomer_id(int customer_id) {
+        this.customer_id = customer_id;
+    }
 
     public int getPrice() {
 

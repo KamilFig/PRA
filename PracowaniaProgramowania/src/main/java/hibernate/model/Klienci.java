@@ -39,8 +39,8 @@ public class Klienci {
     @JoinColumn(name="Address_ID", referencedColumnName = "id")
     Address address;
 
-  /*  @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="Rent_ID",referencedColumnName = "rent_id")
+    /*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name="Rent_ID",referencedColumnName = "customer_id")
     private List<Wypozyczenia> rent = new ArrayList<>();
 
     public List<Wypozyczenia> getRent() {

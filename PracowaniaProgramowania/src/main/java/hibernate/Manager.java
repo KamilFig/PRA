@@ -54,7 +54,6 @@ class Manager {
             wypozyczenia.setPrice(100);
             wypozyczenia.setRent_date("1999-10-10");
             wypozyczenia.setReturn_date("1999-11-10");
-
             emp.setAddress(address);
             emp2.setAddress(address);
             entityManager.persist(address);
