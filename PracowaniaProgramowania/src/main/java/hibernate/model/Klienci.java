@@ -39,8 +39,7 @@ public class Klienci {
     @JoinColumn(name="Address_ID", referencedColumnName = "id")
     Address address;
 
-    /*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name="Rent_ID",referencedColumnName = "customer_id")
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Wypozyczenia> rent = new ArrayList<>();
 
     public List<Wypozyczenia> getRent() {
@@ -50,7 +49,7 @@ public class Klienci {
     public void setRent(List<Wypozyczenia> rent) {
         this.rent = rent;
     }
-    */
+
     public Klienci() {}
 
     public int getId() {

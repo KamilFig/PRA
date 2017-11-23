@@ -3,6 +3,7 @@ package hibernate;
 import hibernate.model.Address;
 import hibernate.model.Klienci;
 import hibernate.model.Wypozyczenia;
+import hibernate.model.Autor;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -54,11 +55,31 @@ class Manager {
             wypozyczenia.setPrice(100);
             wypozyczenia.setRent_date("1999-10-10");
             wypozyczenia.setReturn_date("1999-11-10");
+            wypozyczenia.setBook_id(1);
+            wypozyczenia.setTitle("Calineczka");
+            //add rent 2
+            Wypozyczenia wypozyczenia2 = new Wypozyczenia();
+            wypozyczenia2.setPrice(100);
+            wypozyczenia2.setRent_date("1999-10-10");
+            wypozyczenia2.setReturn_date("1999-11-10");
+            wypozyczenia2.setBook_id(2);
+            wypozyczenia2.setTitle("Harry Potter");
+            //add author
+            Autor autor = new Autor();
+            autor.setFirstName("Maciej");
+            autor.setLastName("Ziemniewicz");
+            autor.setAge(21);
+
+            emp.getRent().add(wypozyczenia);
+            emp.getRent().add(wypozyczenia2);
             emp.setAddress(address);
             emp2.setAddress(address);
+            wypozyczenia.getAuthor().add(autor);
+
             entityManager.persist(address);
-            entityManager.persist(wypozyczenia);
             entityManager.persist(emp);
+            entityManager.persist(wypozyczenia);
+            entityManager.persist(autor);
 
 
 

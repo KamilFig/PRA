@@ -19,8 +19,11 @@ public class Wypozyczenia {
     @GeneratedValue
     @Column(name = "rent_id")
     private int rent_id;
-    @Column(name = "customer_id")
-    private int customer_id;
+
+    @Column(name = "book_id")
+    private int book_id;
+    @Column(name = "title")
+    private String title;
     @Column(name = "price")
     private int price;
 
@@ -30,10 +33,10 @@ public class Wypozyczenia {
     @Column(name = "return_date")
     private String return_date;
 
-  /*  @ManyToOne
-    @JoinColumn(name="id")
-    private Klienci klient;
-   */
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+
+    private List<Autor> author = new ArrayList<>();
+
     public Wypozyczenia() {
     }
 
@@ -46,13 +49,6 @@ public class Wypozyczenia {
         this.rent_id = rent_id;
     }
 
-    public int getCustomer_id() {
-        return customer_id;
-    }
-
-    public void setCustomer_id(int customer_id) {
-        this.customer_id = customer_id;
-    }
 
     public int getPrice() {
 
@@ -79,5 +75,27 @@ public class Wypozyczenia {
         this.return_date = return_date;
     }
 
+    public int getBook_id() {
+        return book_id;
+    }
 
+    public void setBook_id(int book_id) {
+        this.book_id = book_id;
+    }
+
+    public List<Autor> getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(List<Autor> author) {
+        this.author = author;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }
