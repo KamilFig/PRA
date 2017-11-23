@@ -31,7 +31,7 @@ public class JacksonSerialization {
 
     final static Logger logger = Logger.getLogger(JacksonSerialization.class);
 
-   /* public static void serializeDemo(ObjectMapper mapper, String fileSuffix) throws IOException {
+    public static void serializeDemo(ObjectMapper mapper, String fileSuffix) throws IOException {
         //Set mapper to pretty-print
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         mapper.registerModule(new JodaModule());
@@ -39,48 +39,37 @@ public class JacksonSerialization {
 
         //Create objects to serialize
         ModelObjectsCreator objectsCreator = new ModelObjectsCreator();
-        Klienci employee = objectsCreator.getEmp();
-
-        //Serialize to file and string
-        mapper.writeValue(new File("result." + fileSuffix), employee);
-        String jsonString = mapper.writeValueAsString(employee);
-        logger.info("Printing serialized original object " + fileSuffix);
-        System.out.println(jsonString);
-
-        //Deserialize from file
-        Klienci deserializedEmployee = mapper.readValue(
-                new File("result." + fileSuffix), Klienci.class);
-
-
-
-        //Serialize back
-        mapper.writeValue(new File("result-modified." + fileSuffix), deserializedEmployee);
-        String modifiedJsonString = mapper.writeValueAsString(deserializedEmployee);
-        logger.info("Printing serialized modified object " + fileSuffix);
-        System.out.println(modifiedJsonString);
+        Klienci klient = objectsCreator.getK();
 
         //Serialize generic List
-        List<Klienci> employees = objectsCreator.getEmployees();
-        String employeesListSerialized = mapper.writeValueAsString(employees);
+        List<Klienci> klients = objectsCreator.getKlient();
+        String employeesListSerialized = mapper.writeValueAsString(klients);
         logger.info("Printing serialized employees list " + fileSuffix);
+        mapper.writeValue(new File("klienci." + fileSuffix), klients);
         System.out.println(employeesListSerialized);
     }
-    */
+
     public static void deserializeDemo(ObjectMapper mapper, String fileSuffix) throws IOException {
         //Set mapper to pretty-print
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         mapper.registerModule(new JodaModule());
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
+        //Create objects to serialize
+        ModelObjectsCreator objectsCreator = new ModelObjectsCreator();
+
+        //  List<Klienci> klient = objectsCreator.getEmployees();
+
         //Deserialized employee object from klienci.* file in resources
-        InputStream employeeIs = JacksonSerialization.class.getClassLoader().
+        InputStream klientIs = JacksonSerialization.class.getClassLoader().
                 getResourceAsStream("klienci1." + fileSuffix);
-        Klienci deserializedEmployee = mapper.readValue(employeeIs, Klienci.class);
+        Klienci deserializedEmployee = mapper.readValue(klientIs, Klienci.class);
+
         String modifiedSerialzied = mapper.writeValueAsString(deserializedEmployee);
         logger.info("Odczyt" + fileSuffix);
         System.out.println(modifiedSerialzied);
-
-        System.out.println("Start");
+    }
+       /* System.out.println("Start");
 
         EntityManager entityManager = null;
 
@@ -128,13 +117,14 @@ public class JacksonSerialization {
         }
 
     }
+    */
 
     public static void main(String[] args) throws IOException {
 
 
         ObjectMapper jsonMapper = new ObjectMapper();
-       // serializeDemo(jsonMapper, "json");
-        deserializeDemo(jsonMapper, "json");
+        serializeDemo(jsonMapper, "json");
+        // deserializeDemo(jsonMapper, "json");
 
 
 

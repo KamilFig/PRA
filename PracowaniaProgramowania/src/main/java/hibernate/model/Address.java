@@ -13,19 +13,19 @@ public class Address {
     private int id;
 
     @Column(nullable = false)
-    String street;
+    private String street;
 
     @Column(nullable = false)
-    String city;
+    private String city;
 
     @Column(length = 5, nullable = false)
-    String nr;
+    private String nr;
 
     @Column(length = 5)
-    String housenr;
+    private String housenr;
 
     @Column(length = 5, nullable = false)
-    String postcode;
+     private  String postcode;
 
     public int getId() {
         return id;
