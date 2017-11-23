@@ -19,10 +19,10 @@ public class Address {
     private String city;
 
     @Column(length = 5, nullable = false)
-    private String nr;
+    private int nr;
 
     @Column(length = 5)
-    private String housenr;
+    private int housenr;
 
     @Column(length = 5, nullable = false)
      private  String postcode;
@@ -51,19 +51,19 @@ public class Address {
         this.city = city;
     }
 
-    public String getNr() {
+    public int getNr() {
         return nr;
     }
 
-    public void setNr(String nr) {
+    public void setNr(int nr) {
         this.nr = nr;
     }
 
-    public String getHousenr() {
+    public int getHousenr() {
         return housenr;
     }
 
-    public void setHousenr(String housenr) {
+    public void setHousenr(int housenr) {
         this.housenr = housenr;
     }
 

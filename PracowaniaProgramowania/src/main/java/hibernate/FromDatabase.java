@@ -35,19 +35,22 @@ class FromDatabase {
 
         ObjectMapper jsonKlienci = new ObjectMapper();
         XmlMapper xmlKlienci = new XmlMapper();
-        
+
         String klientJsonString;
         String klientXmlString;
 
         try {
 
+            //Zapis Json
             klientJsonString=jsonKlienci.writeValueAsString(query1.getResultList());
+
             FileWriter fileWriter1=new FileWriter("Klienci.json");
             BufferedWriter bufferedWriter1=new BufferedWriter(fileWriter1);
             bufferedWriter1.write(klientJsonString);
             bufferedWriter1.close();
             fileWriter1.close();
 
+            //Zapis xml
             klientXmlString=xmlKlienci.writeValueAsString(query1.getResultList());
             FileWriter fileWriter2=new FileWriter("Klienci.xml");
             BufferedWriter bufferedWriter2=new BufferedWriter(fileWriter2);

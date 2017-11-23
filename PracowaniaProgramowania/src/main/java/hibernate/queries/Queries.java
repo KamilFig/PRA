@@ -1,32 +1,35 @@
 package hibernate.queries;
-
+import hibernate.model.Address;
+import hibernate.model.Klienci;
+import hibernate.model.Wypozyczenia;
+import hibernate.model.Autor;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class Queries {
-/*
+
     EntityManager entityManager;
 
     public Queries(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
-    public List<Employee> getEmployeeByName(String name) {
-        TypedQuery<Employee> query = entityManager.createQuery(
-                "SELECT c FROM Employee c WHERE c.lastName LIKE :name", Employee.class);
+    public List<Klienci> getEmployeeByName(String name) {
+        TypedQuery<Klienci> query = entityManager.createQuery(
+                "SELECT c FROM Klienci c WHERE c.lastName LIKE :name", Klienci.class);
         return query.setParameter("name", name).getResultList();
     }
 
-    public List<Employee> getAllEmployeeByPage(int pagenr) {
+    public List<Klienci> getAllEmployeeByPage(int pagenr) {
         //calculate total number
         Query queryTotal = entityManager.createQuery
-                ("Select count(f) from Employee f");
+                ("Select count(f) from Klienci f");
         long countResult = (long)queryTotal.getSingleResult();
 
         //create query
-        Query query = entityManager.createQuery("Select e FROM Employee e");
+        Query query = entityManager.createQuery("Select e FROM Klienci e");
         //set pageSize
         int pageSize = 10;
         //calculate number of pages
@@ -38,5 +41,11 @@ public class Queries {
 
         return query.getResultList();
     }
-    */
+    public List<Wypozyczenia> BlacFriday(int salary) {
+        TypedQuery<Wypozyczenia> query = entityManager.createQuery(
+                "SELECT c FROM Klienci c WHERE c.prince = :salary", Wypozyczenia.class);
+        return query.setParameter("salary", salary).getResultList();
+    }
+
+
 }

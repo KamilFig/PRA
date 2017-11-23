@@ -29,8 +29,9 @@ public class Klienci {
     @Column(name = "PESEL", nullable = false, unique = true)
     private int pesel;
 
-    @JsonFormat(pattern = "yyyy-MM-dd")
-    private DateTime birth;
+  //  @JsonFormat(pattern = "yyyy-MM-dd")
+    @Column(name = "birth")
+    private String birth;
 
     @Column(name = "gender")
     private String gender;
@@ -84,11 +85,11 @@ public class Klienci {
         this.pesel = pesel;
     }
 
-    public DateTime getBirth() {
+    public String getBirth() {
         return birth;
     }
 
-    public void setBirth(DateTime birth) {
+    public void setBirth(String birth) {
         this.birth = birth;
     }
 

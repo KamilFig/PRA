@@ -98,7 +98,7 @@ public class ModelObjectsCreator {
         Address address = new Address();
         address.setCity("poznan");
         address.setStreet("poznanska");
-        address.setNr("1");
+        address.setNr(1);
         address.setPostcode("99090");
 
         //add rent
