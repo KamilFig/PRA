@@ -80,7 +80,7 @@ public class JacksonSerialization {
         logger.info("Odczyt" + fileSuffix);
         System.out.println(modifiedSerialzied);
 
-     /*  InputStream addressIs = JacksonSerialization.class.getClassLoader().
+     /*InputStream addressIs = JacksonSerialization.class.getClassLoader().
                getResourceAsStream("Address." + fileSuffix);
        Klienci deserializedAddress = mapper.readValue(addressIs, Address.class);
        String modifiedSerialzied = mapper.writeValueAsString(deserializedAddress);
@@ -108,13 +108,15 @@ public class JacksonSerialization {
             k.setPesel(deserializedEmployee.getPesel());
             k.setBirth(deserializedEmployee.getBirth());
 
-            k.setAddress(deserializedEmployee.getAddress());
+           k.setAddress(deserializedEmployee.getAddress());
 
             Address address = new Address();
             address.setCity(deserializedEmployee.getAddress().getCity());
             address.setStreet(deserializedEmployee.getAddress().getStreet());
             address.setNr(deserializedEmployee.getAddress().getHousenr());
             address.setPostcode(deserializedEmployee.getAddress().getPostcode());
+
+
 
 
             entityManager.persist(address);

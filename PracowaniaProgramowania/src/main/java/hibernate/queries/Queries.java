@@ -43,9 +43,10 @@ public class Queries {
     }
     public List<Wypozyczenia> BlacFriday(int salary) {
         TypedQuery<Wypozyczenia> query = entityManager.createQuery(
-                "SELECT c FROM Wypozyczenia c ", Wypozyczenia.class);
-        return query.getResultList();
+                "SELECT c FROM Wypozyczenia c where c.price like :salary", Wypozyczenia.class);
+        return query.setParameter("salary",salary).getResultList();
     }
+
 
 
 }

@@ -131,7 +131,8 @@ class Manager {
 
             System.out.println("Done");
 
-            changePrince(entityManager);
+         //  changePrince(entityManager);
+            changeFirstGuyToKamil(entityManager);
             entityManager.close();
 
         } catch (Throwable ex) {
@@ -149,22 +150,15 @@ class Manager {
         List<Klienci> klienci = new Queries(entityManager).getAllEmployeeByPage(1);
 
         klienci.get(0).setFirstName("Kamil"); //Zmiana imienie 1 klienta na Kamil
-        System.out.println();
-
-    }
-    static void changePrince(EntityManager entityManager) {
-
-        Query query1 = entityManager.createQuery("SELECT k FROM Wypozyczenia k");
-        List<Wypozyczenia> wypoz = new Queries(entityManager).BlacFriday(100);
-        ObjectMapper objectMapper = new ObjectMapper();
+      ObjectMapper objectMapper = new ObjectMapper();
         try{
-            String cos = objectMapper.writeValueAsString(wypoz);
-            System.out.println("Dzialalalalallala " + cos);
-        }
+          String cos = objectMapper.writeValueAsString(klienci);
+          System.out.println("Dzialalalalallala " + cos);
+      }
       catch (Exception e) {
-            e.printStackTrace();
-        }
-        wypoz.get(0).setPrice(50); //Zmiana ceny
+          e.printStackTrace();
+      }
 
     }
+
 }
