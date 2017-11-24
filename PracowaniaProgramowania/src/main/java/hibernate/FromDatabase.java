@@ -20,10 +20,10 @@ class FromDatabase {
 
     public static void main (String args[])
     {
-        ObjectMapper mapper = new ObjectMapper();
+        /*ObjectMapper mapper = new ObjectMapper();
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
         mapper.registerModule(new JodaModule());
-        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);*/
 
         EntityManagerFactory entityManagerFactory = null;
         EntityManager entityManager = null;
