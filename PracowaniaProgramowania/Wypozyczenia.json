@@ -1,1 +1,32 @@
-[{"rent_id":3,"book_id":1,"title":"Calineczka","price":100,"rent_date":"1999-10-10","return_date":"1999-11-10","author":[{"id":4,"firstName":"Maciej","lastName":"Ziemniewicz","age":21}]},{"rent_id":5,"book_id":2,"title":"Harry Potter","price":100,"rent_date":"1999-10-10","return_date":"1999-11-10","author":[]}]
+[ {
+  "rent_id" : 3,
+  "book_id" : 1,
+  "title" : "Calineczka",
+  "price" : 100,
+  "rent_date" : "1999-10-10",
+  "return_date" : "1999-11-10",
+  "author" : [ {
+    "id" : 4,
+    "firstName" : "Hans Christian",
+    "lastName" : "Andersen",
+    "age" : 60
+  } ]
+}, {
+  "rent_id" : 5,
+  "book_id" : 2,
+  "title" : "Harry Potter",
+  "price" : 100,
+  "rent_date" : "1999-10-10",
+  "return_date" : "1999-11-10",
+  "author" : [ {
+    "id" : 6,
+    "firstName" : "J.K.",
+    "lastName" : "Rowling",
+    "age" : 30
+  }, {
+    "id" : 7,
+    "firstName" : "Barry",
+    "lastName" : "Denenberg",
+    "age" : 50
+  } ]
+} ]

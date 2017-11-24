@@ -1,1 +1,15 @@
-[{"id":1,"street":"poznanska","city":"poznan","nr":"1","housenr":null,"postcode":"99090"}]
+[ {
+  "id" : 1,
+  "street" : "poznanska",
+  "city" : "Poznan",
+  "nr" : 1,
+  "housenr" : 31,
+  "postcode" : "99090"
+}, {
+  "id" : 2,
+  "street" : "wroclawska",
+  "city" : "Wroclaw",
+  "nr" : 2,
+  "housenr" : 50,
+  "postcode" : "33033"
+} ]

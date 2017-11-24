@@ -1,1 +1,18 @@
-<ArrayList><item><id>1</id><street>poznanska</street><city>poznan</city><nr>1</nr><housenr/><postcode>99090</postcode></item></ArrayList>
+<ArrayList>
+  <item>
+    <id>1</id>
+    <street>poznanska</street>
+    <city>Poznan</city>
+    <nr>1</nr>
+    <housenr>31</housenr>
+    <postcode>99090</postcode>
+  </item>
+  <item>
+    <id>2</id>
+    <street>wroclawska</street>
+    <city>Wroclaw</city>
+    <nr>2</nr>
+    <housenr>50</housenr>
+    <postcode>33033</postcode>
+  </item>
+</ArrayList>

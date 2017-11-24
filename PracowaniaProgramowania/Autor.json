@@ -1,1 +1,16 @@
-[{"id":4,"firstName":"Maciej","lastName":"Ziemniewicz","age":21}]
+[ {
+  "id" : 4,
+  "firstName" : "Hans Christian",
+  "lastName" : "Andersen",
+  "age" : 60
+}, {
+  "id" : 6,
+  "firstName" : "J.K.",
+  "lastName" : "Rowling",
+  "age" : 30
+}, {
+  "id" : 7,
+  "firstName" : "Barry",
+  "lastName" : "Denenberg",
+  "age" : 50
+} ]

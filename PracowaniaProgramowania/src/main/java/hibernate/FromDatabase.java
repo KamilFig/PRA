@@ -34,7 +34,14 @@ class FromDatabase {
        Query query1 = entityManager.createQuery("select kl from Klienci kl ");
 
         ObjectMapper jsonKlienci = new ObjectMapper();
+        jsonKlienci.enable(SerializationFeature.INDENT_OUTPUT);
+        jsonKlienci.registerModule(new JodaModule());
+        jsonKlienci.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
         XmlMapper xmlKlienci = new XmlMapper();
+        xmlKlienci.enable(SerializationFeature.INDENT_OUTPUT);
+        xmlKlienci.registerModule(new JodaModule());
+        xmlKlienci.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
         String klientJsonString;
         String klientXmlString;
@@ -66,7 +73,15 @@ class FromDatabase {
        Query query2 = entityManager.createQuery("SELECT ad FROM Address ad");
 
         ObjectMapper jsonAddress = new ObjectMapper();
+        jsonAddress.enable(SerializationFeature.INDENT_OUTPUT);
+        jsonAddress.registerModule(new JodaModule());
+        jsonAddress.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
         XmlMapper xmlAddress = new XmlMapper();
+        xmlAddress.enable(SerializationFeature.INDENT_OUTPUT);
+        xmlAddress.registerModule(new JodaModule());
+        xmlAddress.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
         String addressJsonString;
         String addressXmlString;
 
@@ -93,7 +108,15 @@ class FromDatabase {
        Query query3 = entityManager.createQuery("SELECT wy FROM Wypozyczenia wy");
 
         ObjectMapper jsonWypozyczenia = new ObjectMapper();
+        jsonWypozyczenia.enable(SerializationFeature.INDENT_OUTPUT);
+        jsonWypozyczenia.registerModule(new JodaModule());
+        jsonWypozyczenia.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
         XmlMapper xmlWypozyczenia = new XmlMapper();
+        xmlWypozyczenia.enable(SerializationFeature.INDENT_OUTPUT);
+        xmlWypozyczenia.registerModule(new JodaModule());
+        xmlWypozyczenia.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
         String wypozyczeniaJsonString;
         String wypozyczeniaXmlString;
 
@@ -117,9 +140,19 @@ class FromDatabase {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
        Query  query4 = entityManager.createQuery("SELECT au FROM Autor au");
+
         ObjectMapper jsonAutor = new ObjectMapper();
+        jsonAutor.enable(SerializationFeature.INDENT_OUTPUT);
+        jsonAutor.registerModule(new JodaModule());
+        jsonAutor.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
         XmlMapper xmlAutor = new XmlMapper();
+        xmlAutor.enable(SerializationFeature.INDENT_OUTPUT);
+        xmlAutor.registerModule(new JodaModule());
+        xmlAutor.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
         String autorJsonString;
         String autortXmlString;
 
