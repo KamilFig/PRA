@@ -29,43 +29,45 @@ import java.util.Random;
 
 public class JacksonSerialization {
 
-    final static Logger logger = Logger.getLogger(JacksonSerialization.class);
+    /*   \\\\ KLASA DO TESTOW ////
 
-   /* public static void serializeDemo(ObjectMapper mapper, String fileSuffix) throws IOException {
-        //Set mapper to pretty-print
-        mapper.enable(SerializationFeature.INDENT_OUTPUT);
-        mapper.registerModule(new JodaModule());
-        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);;
+     final static Logger logger = Logger.getLogger(JacksonSerialization.class);
 
-        //Create objects to serialize
-        ModelObjectsCreator objectsCreator = new ModelObjectsCreator();
-        Klienci klienci = objectsCreator.getK();
+  public static void serializeDemo(ObjectMapper mapper, String fileSuffix) throws IOException {
+         //Set mapper to pretty-print
+         mapper.enable(SerializationFeature.INDENT_OUTPUT);
+         mapper.registerModule(new JodaModule());
+         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);;
 
-        //Serialize to file and string
-        mapper.writeValue(new File("result." + fileSuffix), klienci);
-        String jsonString = mapper.writeValueAsString(klienci);
-        logger.info("Printing serialized original object " + fileSuffix);
-        System.out.println(jsonString);
+         //Create objects to serialize
+         ModelObjectsCreator objectsCreator = new ModelObjectsCreator();
+         Klienci klienci = objectsCreator.getK();
 
-        //Deserialize from file
-        Klienci deserializedEmployee = mapper.readValue(
-                new File("result." + fileSuffix), Klienci.class);
+         //Serialize to file and string
+         mapper.writeValue(new File("result." + fileSuffix), klienci);
+         String jsonString = mapper.writeValueAsString(klienci);
+         logger.info("Printing serialized original object " + fileSuffix);
+         System.out.println(jsonString);
+
+         //Deserialize from file
+         Klienci deserializedEmployee = mapper.readValue(
+                 new File("result." + fileSuffix), Klienci.class);
 
 
 
-        //Serialize back
-        mapper.writeValue(new File("result-modified." + fileSuffix), deserializedEmployee);
-        String modifiedJsonString = mapper.writeValueAsString(deserializedEmployee);
-        logger.info("Printing serialized modified object " + fileSuffix);
-        System.out.println(modifiedJsonString);
+         //Serialize back
+         mapper.writeValue(new File("result-modified." + fileSuffix), deserializedEmployee);
+         String modifiedJsonString = mapper.writeValueAsString(deserializedEmployee);
+         logger.info("Printing serialized modified object " + fileSuffix);
+         System.out.println(modifiedJsonString);
 
-        //Serialize generic List
-        List<Klienci> kliencis = objectsCreator.getKlient();
-        String employeesListSerialized = mapper.writeValueAsString(kliencis);
-        logger.info("Printing serialized employees list " + fileSuffix);
-        System.out.println(employeesListSerialized);
-    }
-*/
+         //Serialize generic List
+         List<Klienci> kliencis = objectsCreator.getKlient();
+         String employeesListSerialized = mapper.writeValueAsString(kliencis);
+         logger.info("Printing serialized employees list " + fileSuffix);
+         System.out.println(employeesListSerialized);
+     }
+
    public static void deserializeDemo(ObjectMapper mapper, String fileSuffix) throws IOException {
         //Set mapper to pretty-print
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
@@ -80,12 +82,12 @@ public class JacksonSerialization {
         logger.info("Odczyt" + fileSuffix);
         System.out.println(modifiedSerialzied);
 
-     /*InputStream addressIs = JacksonSerialization.class.getClassLoader().
+     InputStream addressIs = JacksonSerialization.class.getClassLoader().
                getResourceAsStream("Address." + fileSuffix);
        Klienci deserializedAddress = mapper.readValue(addressIs, Address.class);
        String modifiedSerialzied = mapper.writeValueAsString(deserializedAddress);
        logger.info("Odczyt" + fileSuffix);
-       System.out.println(modifiedSerialzied);*/
+       System.out.println(modifiedSerialzied);
 
         System.out.println("Start");
 
@@ -150,9 +152,9 @@ public class JacksonSerialization {
 
 
 
-      /*  ObjectMapper xmlMapper = new XmlMapper();
+        ObjectMapper xmlMapper = new XmlMapper();
         serializeDemo(xmlMapper, "xml");
         deserializeDemo(xmlMapper, "xml");
-*/
-    }
+
+    }*/
 }
