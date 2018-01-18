@@ -3,9 +3,11 @@ package com.pracownia.spring.controllers;
 import com.pracownia.spring.entities.Product;
 import com.pracownia.spring.entities.Seller;
 import com.pracownia.spring.entities.Klienci;
+import com.pracownia.spring.entities.Address;
 import com.pracownia.spring.services.KlienciService;
 import com.pracownia.spring.services.ProductService;
 import com.pracownia.spring.services.SellerService;
+import com.pracownia.spring.services.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -36,8 +38,11 @@ public class IndexController {
     @Autowired
     private SellerService sellerService;
 
-  @Autowired
+    @Autowired
     private KlienciService klienciService;
+
+    @Autowired
+    private AddressService addressService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     String index() {
@@ -70,6 +75,20 @@ public class IndexController {
         k2.setPesel(new Random().nextInt());
         k2.setBirth("1996-10-12");
         k2.setGender("Mezczyzna");
+        //1 Address
+        Address address1 = new Address();
+        address1.setCity("Poznan");
+        address1.setStreet("poznanska");
+        address1.setNr(1);
+        address1.setPostcode("99090");
+        address1.setHousenr(31);
+        //2 Address
+        Address address2 = new Address();
+        address2.setCity("Wroclaw");
+        address2.setStreet("wroclawska");
+        address2.setNr(2);
+        address2.setPostcode("33033");
+        address2.setHousenr(50);
 
         productService.saveProduct(p1);
         productService.saveProduct(p2);
@@ -77,6 +96,9 @@ public class IndexController {
 
        klienciService.saveKlient(k1);
        klienciService.saveKlient(k2);
+
+       addressService.saveAddress(address1);
+       addressService.saveAddress(address2);
 
         Seller seller = new Seller("Biedra", "Poznan", Arrays.asList(p1.getProductId(), p2.getProductId(), p3.getProductId()));
         Seller seller2 = new Seller("Lidl", "Krosno", Arrays.asList(p1.getProductId(), p2.getProductId()));
@@ -90,10 +112,15 @@ public class IndexController {
         p1.getSellers().add(seller2);
         p2.getSellers().add(seller2);
 
+        k1.setAddress(address1);         //Klient 1 adress 1
+        k2.setAddress(address2);         //Klient 2 adress 2
+
         productService.saveProduct(p1);
         productService.saveProduct(p2);
         productService.saveProduct(p3);
 
+        klienciService.saveKlient(k1);
+        klienciService.saveKlient(k2);
         return "Model Generated";
     }
 
