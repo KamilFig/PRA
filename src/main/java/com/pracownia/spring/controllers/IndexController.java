@@ -2,6 +2,8 @@ package com.pracownia.spring.controllers;
 
 import com.pracownia.spring.entities.Product;
 import com.pracownia.spring.entities.Seller;
+import com.pracownia.spring.entities.Klienci;
+import com.pracownia.spring.services.KlienciService;
 import com.pracownia.spring.services.ProductService;
 import com.pracownia.spring.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
+import java.util.Random;
 
 /**
  * Homepage controller.
@@ -32,6 +35,9 @@ public class IndexController {
 
     @Autowired
     private SellerService sellerService;
+
+    @Autowired
+    private KlienciService klienciService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     String index() {
@@ -49,10 +55,28 @@ public class IndexController {
         Product p1 = new Product(UUID.randomUUID().toString(),"Jajko", new BigDecimal(2.50), dateAndTime.plusDays(7));
         Product p2 = new Product(UUID.randomUUID().toString(),"Masło", new BigDecimal(3.50), dateAndTime.plusDays(7));
         Product p3 = new Product(UUID.randomUUID().toString(),"Mąka", new BigDecimal(1.50), dateAndTime.plusDays(7));
+        //1 Klient
+        Klienci k1 = new Klienci();
+        k1.setFirstName("Jan");
+        k1.setLastName("Polak");
+        k1.setPesel(new Random().nextInt());
+        k1.setBirth("1999-10-10");
+        k1.setGender("Mezczynza");
+
+        //2 Klient
+        Klienci k2 = new Klienci();
+        k2.setFirstName("Roman");
+        k2.setLastName("Kowalski");
+        k2.setPesel(new Random().nextInt());
+        k2.setBirth("1996-10-12");
+        k2.setGender("Mezczyzna");
 
         productService.saveProduct(p1);
         productService.saveProduct(p2);
         productService.saveProduct(p3);
+        
+        klienciService.saveKlient(k1);
+        klienciService.saveKlient(k2);
 
         Seller seller = new Seller("Biedra", "Poznan", Arrays.asList(p1.getProductId(), p2.getProductId(), p3.getProductId()));
         Seller seller2 = new Seller("Lidl", "Krosno", Arrays.asList(p1.getProductId(), p2.getProductId()));
