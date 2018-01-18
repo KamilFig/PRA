@@ -36,7 +36,7 @@ public class IndexController {
     @Autowired
     private SellerService sellerService;
 
-    @Autowired
+  @Autowired
     private KlienciService klienciService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
@@ -56,7 +56,7 @@ public class IndexController {
         Product p2 = new Product(UUID.randomUUID().toString(),"Masło", new BigDecimal(3.50), dateAndTime.plusDays(7));
         Product p3 = new Product(UUID.randomUUID().toString(),"Mąka", new BigDecimal(1.50), dateAndTime.plusDays(7));
         //1 Klient
-        Klienci k1 = new Klienci();
+       Klienci k1 = new Klienci();
         k1.setFirstName("Jan");
         k1.setLastName("Polak");
         k1.setPesel(new Random().nextInt());
@@ -74,9 +74,9 @@ public class IndexController {
         productService.saveProduct(p1);
         productService.saveProduct(p2);
         productService.saveProduct(p3);
-        
-        klienciService.saveKlient(k1);
-        klienciService.saveKlient(k2);
+
+       klienciService.saveKlient(k1);
+       klienciService.saveKlient(k2);
 
         Seller seller = new Seller("Biedra", "Poznan", Arrays.asList(p1.getProductId(), p2.getProductId(), p3.getProductId()));
         Seller seller2 = new Seller("Lidl", "Krosno", Arrays.asList(p1.getProductId(), p2.getProductId()));

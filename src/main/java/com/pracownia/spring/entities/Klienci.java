@@ -21,6 +21,9 @@ public class Klienci {
     @Column(name = "id")
     private int id;
 
+    @Column
+    private int klienciId;
+
     @Column(name = "first_name")
     private String firstName;
 
@@ -41,21 +44,16 @@ public class Klienci {
     @JoinColumn(name="Address_ID", referencedColumnName = "id")
     Address address;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Wypozyczenia> rent = new ArrayList<>();
+    /*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+   private List<Wypozyczenia> rent = new ArrayList<>();
+    public List<Wypozyczenia> getRent() {return rent; }
 
-
-    public List<Wypozyczenia> getRent() {
-        return rent;
-    }
-
-    public void setRent(List<Wypozyczenia> rent) {
-        this.rent = rent;
-    }
-
+    public void setRent(List<Wypozyczenia> rent) {this.rent = rent; }
+*/
     public Klienci() {}
 
-    public Klienci(String firstName, String lastName, int pesel, String birth, String gender) {
+    public Klienci(int klienciId, String firstName, String lastName, int pesel, String birth, String gender) {
+       this.klienciId = klienciId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.pesel = pesel;
@@ -69,6 +67,14 @@ public class Klienci {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getKlienciId() {
+        return klienciId;
+    }
+
+    public void setKlienciId(int klienciId) {
+        this.klienciId = klienciId;
     }
 
     public String getFirstName() {

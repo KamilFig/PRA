@@ -18,7 +18,7 @@ public class KlienciServicempl implements KlienciService {
     }
 
     @Override
-    public Iterable<Klienci> listAllProducts() {
+    public Iterable<Klienci> listAllKlienci() {
         return klienciRepository.findAll();
     }
 

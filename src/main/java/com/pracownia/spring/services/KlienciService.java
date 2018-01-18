@@ -4,7 +4,7 @@ import com.pracownia.spring.entities.Klienci;
 
 public interface KlienciService {
 
-    Iterable<Klienci> listAllProducts();
+    Iterable<Klienci> listAllKlienci();
 
     Klienci getId(Integer id);
 

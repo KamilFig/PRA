@@ -24,7 +24,7 @@ public class KlienciController {
 
     @RequestMapping(value = "/klienci", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Klienci> list(Model model) {
-        return klienciService.listAllProducts();
+        return klienciService.listAllKlienci();
     }
 
     @RequestMapping(value = "/klienci/{page}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -42,7 +42,7 @@ public class KlienciController {
 
     @RequestMapping(value = "/klient", method = RequestMethod.POST)
     public ResponseEntity<Klienci> create(@RequestBody @Valid @NotNull Klienci klienci) {
-        klienci.setId(new Random().nextInt());
+        klienci.setKlienciId(new Random().nextInt());
         klienciService.saveKlient(klienci);
         return ResponseEntity.ok().body(klienci);
     }
