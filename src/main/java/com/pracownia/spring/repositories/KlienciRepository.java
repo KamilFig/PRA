@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 
 public interface KlienciRepository extends CrudRepository<Klienci, Integer>, PagingAndSortingRepository<Klienci, Integer> {
 
-    Klienci findByKlientId(String klienciId);
+    Klienci findByKlienciId(String klienciId);
 
     @Query("select count(*) from Klienci k where k.id = ?1")
     Integer checkIfExist(Integer id);

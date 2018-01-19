@@ -12,6 +12,5 @@ public interface AddressService {
 
     void deleteAddress(Integer id);
 
-    Address getByName(String name);
 
 }

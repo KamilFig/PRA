@@ -34,8 +34,5 @@ public class AddressServicempl implements  AddressService{
     public void deleteAddress(Integer id) { addressRepository.delete(id);
     }
 
-    @Override
-    public Address getByName(String name) {
-        return addressRepository.findByName(name);
-    }
+
 }

@@ -62,6 +62,6 @@ public class KlienciController {
     @RequestMapping(value = "/klient/{id}", method = RequestMethod.DELETE)
     public RedirectView delete(@PathVariable Integer id) {
         klienciService.deleteKlient(id);
-        return new RedirectView("/api/products", true);
+        return new RedirectView("/api/klienci", true);
     }
 }

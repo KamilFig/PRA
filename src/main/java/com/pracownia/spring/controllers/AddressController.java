@@ -57,8 +57,5 @@ public class AddressController {
         return new RedirectView("/api/klienci", true);
     }
 
-    @RequestMapping(value = "/address/{name}", method = RequestMethod.GET)
-    public Address getByName(@PathVariable String name) {
-        return addressService.getByName(name);
-    }
+
 }

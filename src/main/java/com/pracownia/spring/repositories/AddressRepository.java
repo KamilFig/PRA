@@ -6,6 +6,5 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 public interface AddressRepository  extends CrudRepository<Address, Integer> {
-
-    Address findByName(String name);
+    
 }

@@ -15,7 +15,7 @@ import java.util.Set;
  */
 @Entity
 @JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class,
-        property="refId", scope= com.pracownia.spring.entities.Product.class)
+        property="refId", scope= com.pracownia.spring.entities.Address.class)
 public class Address {
 
     @Id
