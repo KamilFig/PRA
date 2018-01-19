@@ -23,6 +23,8 @@ public class AddressController {
 
     @Autowired
     private AddressService addressService;
+    @Autowired
+    private KlienciService klienciService;
 
     @RequestMapping(value = "/address", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Address> list(Model model) {
@@ -31,7 +33,7 @@ public class AddressController {
 
     @RequestMapping(value = "/address/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_ATOM_XML_VALUE)
     @ResponseBody
-    public Address getByPublicId(@PathVariable("id") Integer publicId) {
+    public Address getByAddressId(@PathVariable("id") Integer publicId) {
         return addressService.getAddressById(publicId);
     }
 
@@ -54,7 +56,7 @@ public class AddressController {
     @RequestMapping(value = "/addres/{id}", method = RequestMethod.DELETE)
     public RedirectView delete(@PathVariable Integer id) {
         addressService.deleteAddress(id);
-        return new RedirectView("/api/klienci", true);
+        return new RedirectView("/api/addres", true);
     }
 
 

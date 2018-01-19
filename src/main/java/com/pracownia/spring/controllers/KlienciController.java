@@ -59,7 +59,7 @@ public class KlienciController {
             return new ResponseEntity<>(HttpStatus.CREATED);
         }
     }
-    @RequestMapping(value = "/klient/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/klienci/{id}", method = RequestMethod.DELETE)
     public RedirectView delete(@PathVariable Integer id) {
         klienciService.deleteKlient(id);
         return new RedirectView("/api/klienci", true);
