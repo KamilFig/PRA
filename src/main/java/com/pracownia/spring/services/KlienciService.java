@@ -12,6 +12,7 @@ public interface KlienciService {
 
     void deleteKlient(Integer id);
 
+
     Boolean checkIfExist(Integer id);
 
     public Iterable<Klienci> listAllKlienciPaging(Integer pageNr, Integer howManyOnPage);

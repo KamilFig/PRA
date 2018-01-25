@@ -1,10 +1,10 @@
 package com.pracownia.spring.controllers;
 
 import com.pracownia.spring.entities.Wypozyczenia;
-
+import com.pracownia.spring.entities.Klienci;
 
 import com.pracownia.spring.services.WypozyczeniaService;
-
+import com.pracownia.spring.services.KlienciService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -23,7 +23,8 @@ import java.util.UUID;
 public class WypozyczeniaController {
     @Autowired
     private WypozyczeniaService wypozyczeniaService;
-
+    @Autowired
+    private KlienciService klienciService;
 
     @RequestMapping(value = "/wypozyczenia", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Wypozyczenia> list(Model model) {
@@ -55,6 +56,7 @@ public class WypozyczeniaController {
     @RequestMapping(value = "/wypozyczenie/{id}", method = RequestMethod.DELETE)
     public RedirectView delete(@PathVariable Integer id) {
         wypozyczeniaService.deleteWypozyczenia(id);
+
         return new RedirectView("/api/wypozyczenie", true);
     }
 }

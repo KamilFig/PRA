@@ -64,4 +64,6 @@ public class KlienciController {
         klienciService.deleteKlient(id);
         return new RedirectView("/api/klienci", true);
     }
-}
+
+    }
+
