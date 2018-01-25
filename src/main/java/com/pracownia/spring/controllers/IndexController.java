@@ -2,8 +2,10 @@ package com.pracownia.spring.controllers;
 
 import com.pracownia.spring.entities.Klienci;
 import com.pracownia.spring.entities.Address;
+import com.pracownia.spring.entities.Wypozyczenia;
 import com.pracownia.spring.services.KlienciService;
 import com.pracownia.spring.services.AddressService;
+import com.pracownia.spring.services.WypozyczeniaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +34,8 @@ public class IndexController {
 
     @Autowired
     private AddressService addressService;
+    @Autowired
+    private WypozyczeniaService wypozyczeniaService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     String index() {
@@ -76,7 +80,13 @@ public class IndexController {
         address2.setNr(2);
         address2.setPostcode("33033");
         address2.setHousenr(50);
-
+        //1 Wypozyczenie
+        Wypozyczenia wypozyczenia = new Wypozyczenia();
+        wypozyczenia.setPrice(100);
+        wypozyczenia.setRent_date("1999-10-10");
+        wypozyczenia.setReturn_date("1999-11-10");
+        wypozyczenia.setBook_id(1);
+        wypozyczenia.setTitle("Calineczka");
 
 
        klienciService.saveKlient(k1);
@@ -85,13 +95,13 @@ public class IndexController {
        addressService.saveAddress(address1);
        addressService.saveAddress(address2);
 
-
+        wypozyczeniaService.saveWypozyczenia(wypozyczenia);
 
 
         k1.setAddress(address1);         //Klient 1 adress 1
         k2.setAddress(address2);         //Klient 2 adress 2
 
-
+        k1.getRent().add(wypozyczenia); //Klient 1 wypozyczenie 1
 
         klienciService.saveKlient(k1);
         klienciService.saveKlient(k2);

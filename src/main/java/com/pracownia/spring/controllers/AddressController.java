@@ -23,8 +23,7 @@ public class AddressController {
 
     @Autowired
     private AddressService addressService;
-    @Autowired
-    private KlienciService klienciService;
+
 
     @RequestMapping(value = "/address", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public Iterable<Address> list(Model model) {

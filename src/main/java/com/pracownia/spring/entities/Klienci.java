@@ -44,12 +44,12 @@ public class Klienci {
     @JoinColumn(name="Address_ID", referencedColumnName = "id")
     Address address;
 
-    /*@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
    private List<Wypozyczenia> rent = new ArrayList<>();
     public List<Wypozyczenia> getRent() {return rent; }
 
     public void setRent(List<Wypozyczenia> rent) {this.rent = rent; }
-*/
+
     public Klienci() {}
 
     public Klienci(int klienciId, String firstName, String lastName, int pesel, String birth, String gender) {
